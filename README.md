@@ -1,1 +1,1 @@
-# JS_level_2
+# advanced JavaScript learning project
