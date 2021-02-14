@@ -1,0 +1,24 @@
+{
+  "name": "webserver",
+  "version": "1.0.0",
+  "description": "geekbrains webserver",
+  "main": "./js/script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./js/script.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tot741/JS_level_2.git"
+  },
+  "author": "Oleg Upovalov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tot741/JS_level_2/issues"
+  },
+  "homepage": "https://github.com/Tot741/JS_level_2#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "http": "0.0.1-security"
+  }
+}
