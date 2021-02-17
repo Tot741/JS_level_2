@@ -3,15 +3,28 @@ const fs = require('fs')
 
 const server = http.createServer((req, res) => {
     console.log(req.url);
-    // console.log(req.headers["sec-fetch-dest"]);
     let path = '.' + req.url
+    const fileExtension = req.url.split('.').pop();
+    switch (fileExtension) {
+        case 'svg':
+            res.setHeader('content-type', 'image/svg+xml');
+            break;
+        case 'html':
+            res.setHeader('content-type', 'text/html; charset=utf-8');
+            break;
+        case 'css':
+            res.setHeader('content-type', 'text/css');
+            break;
+        case 'jpg':
+            res.setHeader('content-type', 'image/jpeg');
+            break;
+        case 'ico':
+            res.setHeader('content-type', 'image/x-icon');
+            break;
+    }
     const body = req.url === '/'
         ? fs.readFileSync('index.html', 'utf8')
-        : fs.readFileSync(path, 'utf8')
-    // let fileType = req.headers["sec-fetch-dest"];
-    // if (fileType === 'image') {
-    //     res.writeHead(200, { 'Content-Type': 'image/jpeg' }) 
-    // };
+        : fs.readFileSync(path)
     res.end(body);
 })
 
