@@ -5,11 +5,11 @@
 }
 .catalog {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     max-width: 1140px;
     margin: 0 auto;
-    padding-left: 113px;
-    padding-right: 113px;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 .card {
     box-sizing: border-box;
@@ -18,37 +18,27 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    align-content: center;
+    align-items: center;
+    padding: 5px;
     }
 .card_img {
     width: 100px;
-    padding-left: 50px;
 }
-.buy_button {
+.btn {
     margin: 10px 0;
-    padding: 10px 0;
-    border-radius: 10px;
+    padding: 5px 5px;
+    border-radius: 5px;
+    background-color: silver;
 }
-.input {
+hr {
+    margin: 30px;
+}
+h2 {
     text-align: center;
-    width: 40px;
-}
-.modal {
-    display: none; 
-    position: fixed;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 1;
 }
 th {
     padding: 10px;
 }
 td {
-    text-align: center;
-}
-h2 {
-    text-align: center; 
-    padding: 20px 0 20px 0;
-}
-hr {
-    margin: 20px;
+    padding: 10px;
 }
