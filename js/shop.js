@@ -16,7 +16,7 @@ class List {
     }
 
     fetchGoods() {
-        const url = 'http://https://geekshopserver.herokuapp.com/database/items.json' // 'http://127.0.0.1:3000/database/items.json'
+        const url = 'https://geekshopserver.herokuapp.com/database/items.json' // 'http://127.0.0.1:3000/database/items.json'
         return fetch(url);
     }
 
