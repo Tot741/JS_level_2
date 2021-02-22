@@ -2,20 +2,22 @@ class List {
     _items = []
 
     constructor(CartInstance) {
-        let goods = this.fetchGoods()
-        goods = goods.map(item => {
-            return new GoodItem(item, CartInstance)
-        })
-        this._items = goods
-        this.render()
+        this.fetchGoods()
+            .then(res => {
+                return res.json()
+            })
+            .then(data => {
+                const goods = data.data.map(item => {
+                    return new GoodItem(item, CartInstance)
+                })
+                this._items = goods
+                this.render()
+            })
     }
 
     fetchGoods() {
-        return [
-            { name: 'Огурец', price: 300, img: './img/cocumb.jpg' },
-            { name: 'Помидор', price: 450, img: './img/tomato.jpg' },
-            { name: 'Редис', price: 180, img: './img/redis.jpg' },
-        ]
+        const url = 'http://https://geekshopserver.herokuapp.com/database/items.json' // 'http://127.0.0.1:3000/database/items.json'
+        return fetch(url);
     }
 
     render() {
