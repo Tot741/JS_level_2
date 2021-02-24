@@ -63,35 +63,21 @@ class GoodItem {
 
 class Cart {
     _items = []
-    _tempItems = []
 
     constructor() {
         this.render()
     }
 
     add(item) {
-        if (this._items.length > 0) {
-            this._items.forEach(Good => {
-                if (Good._name === item.name) {
-                    item = { name: item.name, price: item.price, quantity: (item.quantity + Good._quantity) }
-                }
-                else {
-                    console.log(Good)
-                    this._tempItems.push(Good)
-                    console.log(this._tempItems)
-                }
-
-            })
-            this._tempItems.push(new CartItem(item))
-            this._items = this._tempItems
-            this._tempItems = []
-        }
-        else {
+        const existedItem = this._items.find(good => good._name === item.name)
+        if (existedItem) {
+            existedItem._quantity += item.quantity
+        } else {
             this._items.push(new CartItem(item))
         }
-        console.log(this._items)
         this.render()
     }
+
 
     render() {
         const block = document.querySelector('.table')
