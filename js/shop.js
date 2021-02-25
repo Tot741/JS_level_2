@@ -1,7 +1,7 @@
 class List {
     _items = []
     _fetchCount = 1
-    _urlDataBase = ['https://geekshopserver.herokuapp.com/database/items.json', 'http://https://geekshopserver.herokuapp.com/database/items2.json', 'http://https://geekshopserver.herokuapp.com/database/items3.json']
+    _urlDataBase = ['https://geekshopserver.herokuapp.com/database/items.json', 'https://geekshopserver.herokuapp.com/database/items2.json', 'https://geekshopserver.herokuapp.com/database/items3.json']
 
     // ['http://127.0.0.1:3000/database/items.json', 'http://127.0.0.1:3000/database/items2.json', 'http://127.0.0.1:3000/database/items3.json']
     // or for deploy on Heroku
