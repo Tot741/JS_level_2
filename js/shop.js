@@ -1,5 +1,11 @@
 class List {
     _items = []
+    _fetchCount = 1
+    _urlDataBase = ['https://geekshopserver.herokuapp.com/database/items.json', 'http://https://geekshopserver.herokuapp.com/database/items2.json', 'http://https://geekshopserver.herokuapp.com/database/items3.json']
+
+    // ['http://127.0.0.1:3000/database/items.json', 'http://127.0.0.1:3000/database/items2.json', 'http://127.0.0.1:3000/database/items3.json']
+    // or for deploy on Heroku
+    //['https://geekshopserver.herokuapp.com/database/items.json', 'http://https://geekshopserver.herokuapp.com/database/items2.json', 'http://https://geekshopserver.herokuapp.com/database/items3.json']
 
     constructor(CartInstance) {
         this.fetchGoods()
@@ -10,20 +16,36 @@ class List {
                 const goods = data.data.map(item => {
                     return new GoodItem(item, CartInstance)
                 })
-                this._items = goods
+                this._items = this._items.concat(goods)
                 this.render()
             })
     }
 
     fetchGoods() {
-        const url = 'https://geekshopserver.herokuapp.com/database/items.json' // 'http://127.0.0.1:3000/database/items.json'
+
+        let url = this._urlDataBase[List.instanceCount++]
         return fetch(url);
+    }
+
+    rerender() {
+        this.fetchGoods.bind(this);
+        new List(CartInstance);
     }
 
     render() {
         this._items.forEach(Good => {
             Good.render()
         })
+        if (List.instanceCount < 3) {
+            const nextBtn = new Button('Показать еще', this.rerender.bind(this))
+            const placeToRender = document.querySelector('.next_btn')
+            placeToRender.innerHTML = ''
+            nextBtn.render(placeToRender)
+        } else {
+            const placeToRender = document.querySelector('.next_btn')
+            placeToRender.innerHTML = ''
+        }
+
     }
 }
 
@@ -112,4 +134,5 @@ class CartItem {
 
 }
 const CartInstance = new Cart()
+List.instanceCount = 0
 new List(CartInstance)
