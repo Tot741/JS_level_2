@@ -2,26 +2,44 @@ class List {
     _items = []
 
     constructor(CartInstance) {
-        let goods = this.fetchGoods()
-        goods = goods.map(item => {
-            return new GoodItem(item, CartInstance)
-        })
-        this._items = goods
-        this.render()
+        this.fetchGoods()
+            .then(res => {
+                return res.json()
+            })
+            .then(data => {
+                const goods = data.data.map(item => {
+                    return new GoodItem(item, CartInstance)
+                })
+                this._items = this._items.concat(goods)
+                this.render()
+            })
     }
 
     fetchGoods() {
-        return [
-            { name: 'Огурец', price: 300, img: './img/cocumb.jpg' },
-            { name: 'Помидор', price: 450, img: './img/tomato.jpg' },
-            { name: 'Редис', price: 180, img: './img/redis.jpg' },
-        ]
+
+        let url = `${document.location.protocol}//${document.location.host}/database/items${List.instanceCount++}.json`
+        return fetch(url);
+    }
+
+    rerender() {
+        this.fetchGoods.bind(this);
+        new List(CartInstance);
     }
 
     render() {
         this._items.forEach(Good => {
             Good.render()
         })
+        if (List.instanceCount < 3) {
+            const nextBtn = new Button('Показать еще', this.rerender.bind(this))
+            const placeToRender = document.querySelector('.next_btn')
+            placeToRender.innerHTML = ''
+            nextBtn.render(placeToRender)
+        } else {
+            const placeToRender = document.querySelector('.next_btn')
+            placeToRender.innerHTML = ''
+        }
+
     }
 }
 
@@ -61,35 +79,21 @@ class GoodItem {
 
 class Cart {
     _items = []
-    _tempItems = []
 
     constructor() {
         this.render()
     }
 
     add(item) {
-        if (this._items.length > 0) {
-            this._items.forEach(Good => {
-                if (Good._name === item.name) {
-                    item = { name: item.name, price: item.price, quantity: (item.quantity + Good._quantity) }
-                }
-                else {
-                    console.log(Good)
-                    this._tempItems.push(Good)
-                    console.log(this._tempItems)
-                }
-
-            })
-            this._tempItems.push(new CartItem(item))
-            this._items = this._tempItems
-            this._tempItems = []
-        }
-        else {
+        const existedItem = this._items.find(good => good._name === item.name)
+        if (existedItem) {
+            existedItem._quantity += item.quantity
+        } else {
             this._items.push(new CartItem(item))
         }
-        console.log(this._items)
         this.render()
     }
+
 
     render() {
         const block = document.querySelector('.table')
@@ -124,4 +128,5 @@ class CartItem {
 
 }
 const CartInstance = new Cart()
+List.instanceCount = 0
 new List(CartInstance)
