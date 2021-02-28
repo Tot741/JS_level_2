@@ -1,17 +1,17 @@
 {
     "data": [
         {
-            "name": "Огурец2",
+            "name": "Огурец3",
             "price": 300,
             "img": "./img/cocumb.jpg"
         },
         {
-            "name": "Помидор2",
+            "name": "Помидор3",
             "price": 450,
             "img": "./img/tomato.jpg"
         },
         {
-            "name": "Редис2",
+            "name": "Редис3",
             "price": 180,
             "img": "./img/redis.jpg"
         }
