@@ -173,7 +173,7 @@ class FeedBackForm {
         if (placeToRender) {
             const block = document.createElement('form')
             block.setAttribute('action', '#')
-            block.innerHTML = `Введите имя: <input type=\"text\" onchange=\"feedBack.validator(this.value, \'name\')\"><br>Введите номер телефона: <input type=\"text\" onchange=\"${this._ininstanceName}.validator(this.value, \'phone\')\"><br>Введите email: <input type=\"text\" onchange=\"feedBack.validator(this.value, \'email\')\")>`
+            block.innerHTML = `Введите имя: <input type=\"text\" onchange=\"${this._ininstanceName}.validator(this.value, \'name\')\"><br>Введите номер телефона: <input type=\"text\" onchange=\"${this._ininstanceName}.validator(this.value, \'phone\')\"><br>Введите email: <input type=\"text\" onchange=\"${this._ininstanceName}.validator(this.value, \'email\')\")>`
             placeToRender.appendChild(block)
         }
     }
