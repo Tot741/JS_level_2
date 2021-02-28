@@ -21,6 +21,9 @@ const server = http.createServer((req, res) => {
         case 'ico':
             res.setHeader('content-type', 'image/x-icon');
             break;
+        case 'json':
+            res.setHeader('content-type', 'application/json');
+            break;
     }
     const body = req.url === '/'
         ? fs.readFileSync('index.html', 'utf8')
