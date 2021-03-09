@@ -5,7 +5,9 @@
   "main": "./js/script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./js/script.js"
+    "start": "node ./js/script.js",
+    "build": "webpack",
+    "dev": "webpack serve --hot --config webpack.dev.config.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +22,20 @@
   "dependencies": {
     "fs": "0.0.1-security",
     "http": "0.0.1-security"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.8",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "babel": "^6.23.0",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.1.1",
+    "style-loader": "^2.0.0",
+    "vue": "^2.6.12",
+    "vue-loader": "^15.9.6",
+    "vue-template-compiler": "^2.6.12",
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3"
   }
 }

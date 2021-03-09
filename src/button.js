@@ -1,4 +1,5 @@
-class Button {
+'use strict';
+export default class Button {
     _text = ''
     _callback = null
 
