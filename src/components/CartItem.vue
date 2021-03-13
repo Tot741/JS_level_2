@@ -1,19 +1,31 @@
 <template>
-  <div class="card">
-      {{item.name}}
-      {{item.price}}
-      {{item.quantity}}
-  </div>
+  <tr>
+    <td :class="[$style.table]">{{ getCartItem.name }}</td>
+    <td :class="[$style.table]">{{ getCartItem.price }}</td>
+    <td :class="[$style.table]">{{ this.quantity }}</td>
+    <td :class="[$style.table]">{{ getCartItem.price * this.quantity }}</td>
+  </tr>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   props: {
-        item: Object
-    }
-}
+    id: Number,
+    quantity: Number,
+  },
+  computed: {
+    ...mapGetters(["getData"]),
+    getCartItem() {
+      return this.getData[this.id];
+    },
+  },
+};
 </script>
 
-<style>
-
+<style module>
+.table {
+  width: 120px;
+}
 </style>

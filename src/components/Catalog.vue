@@ -1,39 +1,40 @@
 <template>
-<main>
-    <div v-for="item in data">
-        <CatalogItem :item = item />
+  <main :class="[$style.catalog]">
+    <div v-for="id in getItemsOnPage" :key="id">
+      <CatalogItem :id="id" />
     </div>
-</main>
+  </main>
 </template>
 
 <script>
-import CatalogItem from './CatalogItem.vue'
+import { mapGetters, mapActions } from "vuex";
+
+import CatalogItem from "./CatalogItem.vue";
+
 export default {
-    data () {
-        return {
-            data: [{
-                        "name": "Огурец",
-                        "price": 300,
-                        "img": "./img/cocumb.jpg"
-                    },
-                    {
-                        "name": "Помидор",
-                        "price": 450,
-                        "img": "./img/tomato.jpg"
-                    },
-                    {
-                        "name": "Редис",
-                        "price": 180,
-                        "img": "./img/redis.jpg"
-                    }]
-        }
-    },
-    components: {
-        CatalogItem,
-    }
-}
+  methods: {
+    ...mapActions(["requestData"]),
+  },
+  computed: {
+    ...mapGetters(["getItemsOnPage"]),
+  },
+  created() {
+    const currentData = this.requestData(0);
+  },
+  components: {
+    CatalogItem,
+  },
+};
 </script>
 
-<style>
-
+<style module>
+.catalog {
+  display: flex;
+  justify-content: space-around;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-left: 50px;
+  padding-right: 50px;
+  flex-wrap: wrap;
+}
 </style>
