@@ -1,0 +1,20 @@
+[
+        {
+            "id": 7,
+            "name": "Огурец3",
+            "price": 300,
+            "img": "./img/cocumb.jpg"
+        },
+        {
+            "id": 8,
+            "name": "Помидор3",
+            "price": 450,
+            "img": "./img/tomato.jpg"
+        },
+        {
+            "id": 9,
+            "name": "Редис3",
+            "price": 180,
+            "img": "./img/redis.jpg"
+        }
+]
