@@ -2,8 +2,8 @@
   <tr>
     <td :class="[$style.table]">{{ getCartItem.name }}</td>
     <td :class="[$style.table]">{{ getCartItem.price }}</td>
-    <td :class="[$style.table]">{{ this.quantity }}</td>
-    <td :class="[$style.table]">{{ getCartItem.price * this.quantity }}</td>
+    <td :class="[$style.table]">{{ this.quant }}</td>
+    <td :class="[$style.table]">{{ getCartItem.price * this.quant }}</td>
   </tr>
 </template>
 
@@ -13,7 +13,7 @@ import { mapGetters } from "vuex";
 export default {
   props: {
     id: Number,
-    quantity: Number,
+    quant: Number,
   },
   computed: {
     ...mapGetters(["getData"]),

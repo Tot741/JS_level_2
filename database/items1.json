@@ -1,20 +1,20 @@
-[
-        {
-            "id": 4,
-            "name": "Огурец2",
-            "price": 300,
-            "img": "./img/cocumb.jpg"
-        },
-        {
-            "id": 5,
-            "name": "Помидор2",
-            "price": 450,
-            "img": "./img/tomato.jpg"
-        },
-        {
-            "id": 6,
-            "name": "Редис2",
-            "price": 180,
-            "img": "./img/redis.jpg"
-        }
-]
+{
+    "1": {
+        "id": 1,
+        "name": "Огурец",
+        "price": 300,
+        "img": "./img/cocumb.jpg"
+    },
+    "2": {
+        "id": 2,
+        "name": "Помидор",
+        "price": 450,
+        "img": "./img/tomato.jpg"
+    },
+    "3": {
+        "id": 3,
+        "name": "Редис",
+        "price": 180,
+        "img": "./img/redis.jpg"
+    }
+}

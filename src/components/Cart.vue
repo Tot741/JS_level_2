@@ -10,7 +10,7 @@
       </tr>
     </table>
     <table v-for="item in getItemsInCart" :key="item.id">
-      <CartItem :id="item.id" :quantity="item.quantity" />
+      <CartItem :id="item.id" :quant="item.quant" />
     </table>
   </main>
 </template>
@@ -21,11 +21,17 @@ import { mapGetters, mapActions } from "vuex";
 import CartItem from "./CartItem.vue";
 
 export default {
+  methods: {
+    ...mapActions(["requestBasket"]),
+  },
   computed: {
     ...mapGetters(["getItemsInCart"]),
   },
   components: {
     CartItem,
+  },
+  created() {
+    this.requestBasket();
   },
 };
 </script>

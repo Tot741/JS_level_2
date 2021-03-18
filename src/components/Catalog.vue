@@ -1,28 +1,41 @@
 <template>
-  <main :class="[$style.catalog]">
-    <div v-for="id in getItemsOnPage" :key="id">
-      <CatalogItem :id="id" />
-    </div>
-  </main>
+  <div>
+    <main :class="[$style.catalog]">
+      <div v-for="id in getItemsOnPage" :key="id">
+        <CatalogItem :id="id" />
+      </div>
+    </main>
+    <Button @clicked="loadMoreData">Загрузить еще</Button>
+  </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-
 import CatalogItem from "./CatalogItem.vue";
+import Button from "./Button.vue";
 
 export default {
+  data() {
+    return {
+      page: 0,
+    };
+  },
   methods: {
     ...mapActions(["requestData"]),
+    loadMoreData() {
+      this.page++;
+      this.requestData(this.page);
+    },
   },
   computed: {
     ...mapGetters(["getItemsOnPage"]),
   },
   created() {
-    const currentData = this.requestData(0);
+    this.loadMoreData();
   },
   components: {
     CatalogItem,
+    Button,
   },
 };
 </script>
